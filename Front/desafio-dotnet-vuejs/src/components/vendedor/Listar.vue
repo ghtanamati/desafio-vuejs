@@ -1,32 +1,57 @@
 <template>
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Magic</td>
-      <td>Johnson</td>
-      <td>@magic</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Michael</td>
-      <td>Jordan</td>
-      <td>@mj</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>Bird</td>
-      <td>@larry</td>
-    </tr>
-  </tbody>
-</table>
+  <h3>Lista de Vendedores</h3>
+  <hr/>
+  <table class="table table-striped table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Login</th>
+        <th scope="col">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="(vendedor,index) in vendedores" :key = "index">
+        <td>{{ vendedor.id }}</td>
+        <td>{{ vendedor.nome }}</td>
+        <td>{{ vendedor.login }}</td>
+        <td>
+          <button class="btn btn-success" @click="atualizarVendedor(vendedor.id)">Editar</button>
+          <button class="btn btn-danger" @click="excluirVendedor(vendedor)">Excluir</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </template>
+
+<script>
+  import VendedorDataService from '../../services/VendedorDataService';
+
+  export default {
+    data(){
+      return{
+        vendedores: []
+      }
+    },
+    methods:{
+      obterVendedores() {
+        VendedorDataService.listar()
+          .then(response => {
+            this.vendedores = response.data;
+          });
+      },
+      atualizarVendedor(id) {
+        this.$router.push('/vendedor/' + id);
+      },
+      async excluirVendedor(vendedor) {
+        if (confirm(`Tem certeza que deseja excluir o vendedor ${vendedor.nome}?`)) {
+            await VendedorDataService.deletar(vendedor.id);
+            this.obterVendedores();
+          }
+      }
+    },
+    mounted() {
+      this.obterVendedores();
+    }
+  }
+</script>

@@ -25,6 +25,22 @@ namespace SistemaVendas.Controllers
             _repository.Cadastrar(itemPedido);
             return Ok(itemPedido);
         }
+
+        [HttpGet("ObterPorID/{id}")]
+        public IActionResult ObterPorId(int id)
+        {
+            var itemPedido = _repository.ObterPorId(id);
+            if(itemPedido is not null)
+            {
+                var itemPedidoDTO = new ObterItemPedidoDTO(itemPedido);
+                return Ok(itemPedidoDTO);
+            }
+            else
+            {
+                return NotFound(new { Mensagem = "Não foi encontrado um item pedido com este id"});
+            }
+        } 
+
         [HttpGet("ObterPorServico/{idServico}")]
         public IActionResult ObterPorServico(int idServico)
         {
@@ -93,6 +109,12 @@ namespace SistemaVendas.Controllers
             {
                 return NotFound (new {Mensagem = "Não foi encontrado um item pedido com este ID"});
             }
+        }
+        [HttpGet("Listar")]
+        public IActionResult Listar()
+        {
+            var itemPedidos = _repository.Listar();
+            return Ok(itemPedidos);
         }
     }
 }

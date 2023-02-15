@@ -11,6 +11,7 @@ namespace SistemaVendas.Controllers
         public int Id { get; set; }
         public string Nome { get; set; }
         public string Login { get; set; }
+        public string Senha { get; set; }
         public ObterClienteDTO()
         {
         }
@@ -19,6 +20,7 @@ namespace SistemaVendas.Controllers
             Id = cliente.Id;
             Nome = cliente.Nome;
             Login = cliente.Login;
+            Senha = cliente.Senha;
         }
     }
 }

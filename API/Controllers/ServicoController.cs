@@ -114,5 +114,11 @@ namespace SistemaVendas.Controllers
                 return NotFound (new {Mensagem = "Não foi encontrado um serviço com este ID"});
             }
         }
+        [HttpGet("Listar")]
+        public IActionResult Listar()
+        {
+            var servicos = _repository.Listar();
+            return Ok(servicos);
+        }
     }
 }

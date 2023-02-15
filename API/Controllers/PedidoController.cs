@@ -112,5 +112,11 @@ namespace SistemaVendas.Controllers
                 return NotFound (new {Mensagem = "Não foi encontrado um pedido com este ID"});
             }
         }
+        [HttpGet("Listar")]
+        public IActionResult Listar()
+        {
+            var pedidos = _repository.Listar();
+            return Ok(pedidos);
+        }
     }
 }

@@ -1,114 +1,114 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import MeuComponente from './components/MeuComponente.vue'
-import TheWelcome from './components/TheWelcome.vue'
-import WelcomeItem from './components/WelcomeItem.vue'
+  import HelloWorld from './components/HelloWorld.vue'
+  import MeuComponente from './components/MeuComponente.vue'
+  import TheWelcome from './components/TheWelcome.vue'
+  import WelcomeItem from './components/WelcomeItem.vue'
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>>
+
+<link rel='stylesheet' href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 
 <template>
-  <div class="navbar">
+<div class="navbar">
+  <div class="btn-group">
+
     <div class="dropdown">
-      <button class="dropbtn">Vendedor
-        <i class="fa fa-caret-down"></i>
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
       </button>
-      <div class="dropdown-content">
-        <router-link to="/vendedor/listar">Listar</router-link>
-        <a href="#">Listar</a>
-        <a href="#">Listar</a>
-      </div>
-    </div> 
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li>
+          <router-link class="dropdown-item" to="/">Home</router-link>
+        </li>
+      </ul>
+    </div>
+
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        Vendedores
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li>
+          <router-link class="dropdown-item" to="/vendedor/listar">Listar</router-link>
+        </li>
+        <li>
+          <router-link class="dropdown-item" to="/vendedor/cadastrar">Cadastrar</router-link>
+        </li>
+      </ul>
+    </div>
+
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+    Clientes
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+      <li>
+          <router-link class="dropdown-item" to="/cliente/listar">Listar</router-link>
+      </li>
+      <li>
+          <router-link class="dropdown-item" to="/cliente/cadastrar">Cadastrar</router-link>
+      </li>
+  </ul>
+</div>
+
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+      Serviços
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
+      <li>
+            <router-link class="dropdown-item" to="/servico/listar">Listar</router-link>
+        </li>
+        <li>
+            <router-link class="dropdown-item" to="/servico/cadastrar">Cadastrar</router-link>
+        </li>
+    </ul>
   </div>
-<router-view/>
+
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">
+      Itens Pedidos
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
+        <li>
+            <router-link class="dropdown-item" to="/itempedido/listar">Listar</router-link>
+        </li>
+        <li>
+            <router-link class="dropdown-item" to="/itempedido/cadastrar">Novo Item Pedido</router-link>
+        </li>
+    </ul>
+  </div>
+
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">
+      Pedidos
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
+        <li>
+            <router-link class="dropdown-item" to="/pedido/listar">Listar</router-link>
+        </li>
+        <li>
+            <router-link class="dropdown-item" to="/pedido/cadastrar">Novo Pedido</router-link>
+        </li>
+    </ul>
+  </div>
+
+  </div>
+</div>
+<main>
+  <router-view/>
+</main>
 </template>
 
 <style scoped>
+
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
-
-.navbar {
-  overflow: hidden;
+.navbar{
+  padding: 5px;
   background-color: #333;
-}
-
-.navbar a {
-  float: left;
   font-size: 16px;
-  color: white;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-}
-
-.dropdown {
-  float: left;
-  overflow: hidden;
-}
-
-.dropdown .dropbtn {
-  font-size: 16px;  
-  border: none;
-  outline: none;
-  color: white;
-  padding: 14px 16px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
-}
-
-.navbar a:hover, .dropdown:hover .dropbtn {
-  background-color: red;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  float: none;
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-
-.dropdown-content a:hover {
-  background-color: #ddd;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-header {
-  line-height: 1.5;
-}
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
 }
 </style>

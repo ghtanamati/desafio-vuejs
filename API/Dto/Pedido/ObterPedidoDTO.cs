@@ -11,6 +11,8 @@ namespace SistemaVendas.Dto
     {
         public int Id {get; set;}
         public DateTime Data {get;set;}
+        public int VendedorId { get; set; }
+        public int ClienteId { get; set; }
         public ObterClienteDTO Cliente {get;set;}
         public ObterVendedorDTO Vendedor {get;set;}
         public ObterPedidoDTO()
@@ -20,6 +22,8 @@ namespace SistemaVendas.Dto
         {
             Id = pedido.Id;
             Data = pedido.Data;
+            VendedorId = pedido.VendedorId;
+            ClienteId = pedido.ClienteId;
             Cliente = new ObterClienteDTO(pedido.Cliente);
             Vendedor = new ObterVendedorDTO(pedido.Vendedor);
         }

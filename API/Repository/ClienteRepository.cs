@@ -50,5 +50,10 @@ namespace SistemaVendas.Repository
             _context.Clientes.Remove(cliente);
             _context.SaveChanges();
         }
+        
+        public List<Cliente> Listar()
+        {
+            return _context.Clientes.ToList();
+        }
     }
 }

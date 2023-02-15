@@ -65,5 +65,14 @@ namespace SistemaVendas.Repository
             _context.ItensPedidos.Remove(itemPedido);
             _context.SaveChanges();
         }
+        public List<ItemPedido> Listar()
+        {
+            return _context.ItensPedidos
+            .Include(x => x.Pedido)
+            .Include(x => x.Pedido.Cliente)
+            .Include(x => x.Pedido.Vendedor)
+            .Include(x => x.Servico)
+            .ToList();
+        }
     }
 }
