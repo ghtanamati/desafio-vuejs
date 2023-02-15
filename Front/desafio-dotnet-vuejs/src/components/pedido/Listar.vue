@@ -18,10 +18,10 @@
         <td>{{ itemPedido.pedido.data }}</td>
         <td>{{ itemPedido.pedido.vendedorId }}</td>
         <td>{{ itemPedido.pedido.clienteId }}</td>
-        <td>{{ itemPedido.valor * itemPedido.quantidade }}</td>
+        <td>{{ itemPedido.valor*itemPedido.quantidade }}</td>
         <td>
-          <button class="btn btn-success" @click="atualizarPedido(pedido.id)">Editar</button>
-          <button class="btn btn-danger" @click="excluirPedido(pedido)">Excluir</button>
+          <button class="btn btn-success" @click="atualizarPedido(this.pedidos.id)">Editar</button>
+          <button class="btn btn-danger" @click="excluirPedido(this.pedidos)">Excluir</button>
         </td>
       </tr>
     </tbody>
@@ -65,9 +65,11 @@ export default {
     somaTotal(){
       let valorTotal = 0;
       this.itensPedidos.forEach(element => {
-        valorTotal += element.valor*element.quantidade;
-      });
-      console.log(valorTotal);
+        if(this.itensPedidos.pedidoId == this.pedidos.id){
+          valorTotal += element.valor*element.quantidade;
+        }
+        return (valorTotal);
+        });
     }
   },
   mounted() {

@@ -11,7 +11,7 @@ class PedidoDataService {
         return http.put(`/pedido/atualizarpedido/${id}`,pedido);
     }
     obterPorId(id){
-        return http.get(`/pedido/obterporid/${id}`);
+        return http.get(`/pedido/ObterPorId/${id}`);
     }
     async deletar(id){
         return await http.delete(`/pedido/deletarpedido/${id}`);

@@ -4,16 +4,18 @@
     <div class="form" style="padding: 1%;">
         <div class="col-8">
             <div>
-                <label class="form-label">Nome</label>
-                <input type="text" required class="form-control" placeholder="Nome" v-model="pedido.nome">
+                <label class="form-label">Data</label>
+                <input type="text" class="form-control" v-model="pedido.data"  placeholder="Data">
             </div>
+
             <div>
-                <label class="form-label">Login</label>
-                <input type="text" required class="form-control" placeholder="Login" v-model="pedido.login">
+                <label class="form-label">Id do Vendedor</label>
+                <input type="text" required class="form-control" placeholder="Id do Vendedor" v-model="pedido.vendedorId">
             </div>
+
             <div>
-                <label class="form-label">Senha</label>
-                <input type="password" required class="form-control" placeholder="Senha" v-model="pedido.senha">
+                <label class="form-label">Id do Cliente</label>
+                <input type="password" required class="form-control" placeholder="Id do Cliente" v-model="pedido.clienteId">
             </div>
             <button class="btn btn-success" style="margin-top: 5px; padding 2px" @click="cadastrarPedido">Cadastrar</button>
         </div>
@@ -26,22 +28,22 @@ export default {
     data() {
         return {
             pedido: {
-                nome: '',
-                login: '',
-                senha:''
+                id: '',
+                vendedorId: '',
+                clienteId:''
             }
         }
     },
     methods: {
         cadastrarPedido() {
-            if(this.pedido.nome == '' || this.pedido.login == '' || this.pedido.senha == ''){
+            if(this.pedido.id == '' || this.pedido.clienteId == '' || this.pedido.vendedorId == ''){
                 alert("Preencha todos os campos!")
             }
             else{
             var data = {
-                nome: this.pedido.nome,
-                login: this.pedido.login,
-                senha: this.pedido.senha,
+                nome: this.pedido.id,
+                login: this.pedido.clienteId,
+                senha: this.pedido.vendedorId,
             };
             }
             PedidoDataService.cadastrar(data)
