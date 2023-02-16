@@ -23,11 +23,6 @@
                 <input type="text" class="form-control" v-model="pedido.clienteId"  placeholder="Id do Cliente">
             </div>
 
-            <div>
-                <label class="form-label">Valor Total</label>
-                <input type="text" disabled class="form-control" placeholder="Valor Total">
-            </div>
-
             <button type="submit" class="btn btn-success" style="margin-top: 5px; padding 2px" @click="atualizarPedidos">Atualizar</button>
         </div>
     </div>

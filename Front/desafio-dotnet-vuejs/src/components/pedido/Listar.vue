@@ -20,8 +20,8 @@
         <td>{{ itemPedido.pedido.clienteId }}</td>
         <td>{{ itemPedido.valor*itemPedido.quantidade }}</td>
         <td>
-          <button class="btn btn-success" @click="atualizarPedido(this.pedidos.id)">Editar</button>
-          <button class="btn btn-danger" @click="excluirPedido(this.pedidos)">Excluir</button>
+          <button class="btn btn-success" @click="atualizarPedido(itemPedido.pedido.id)">Editar</button>
+          <button class="btn btn-danger" @click="excluirPedido(itemPedido.pedido)">Excluir</button>
         </td>
       </tr>
     </tbody>
@@ -59,17 +59,7 @@ export default {
       ItemPedidoDataService.listar()
         .then(response => {
               this.itensPedidos = response.data;
-              this.somaTotal();
             });
-    },
-    somaTotal(){
-      let valorTotal = 0;
-      this.itensPedidos.forEach(element => {
-        if(this.itensPedidos.pedidoId == this.pedidos.id){
-          valorTotal += element.valor*element.quantidade;
-        }
-        return (valorTotal);
-        });
     }
   },
   mounted() {

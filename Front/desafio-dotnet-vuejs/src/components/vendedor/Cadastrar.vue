@@ -1,5 +1,5 @@
 <template>
-    <h3>Novo Pedido</h3>
+    <h3>Novo Vendedor</h3>
     <hr/>
     <div class="form" style="padding: 1%;">
         <div class="col-8">
